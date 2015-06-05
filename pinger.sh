@@ -7,7 +7,7 @@ TOPIC="$2"
 
 fping -A -e -l -b12 -p 60000 -g 10.0.0.0/22 2>/dev/null | while read -r PING_RESPONSE; do
     ip_regex='[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}'
-    regex="($ip_regex)[ ]+: \[(.*)\], (.*) bytes, (.*) ms \((.*) avg, (.*)% loss\)" 
+    regex="($ip_regex)[ ]+: \[(.*)\], (.*) bytes, (.*) ms \((.*) avg, (.*)% loss\)"
     [[ $PING_RESPONSE =~ $regex ]]
     IP="${BASH_REMATCH[1]}"
     COUNT="${BASH_REMATCH[2]}"
