@@ -25,7 +25,7 @@ fping -A -e -l -b12 -p 60000 -g 10.0.0.0/22 2>/dev/null | while read -r PING_RES
         --arg size "$SIZE" \
         --arg roundtrip "$ROUNDTRIP" \
         --arg now "$NOW" \
-        '{ "ip": $ip, "size": $size, "roundtrip": $roundtrip, "time": $now }'
+        '{ "ip": $ip, "size": $size|tonumber, "roundtrip": $roundtrip|tonumber, "time": $now }'
 
 
 done | kafkacat -P -b $BROKERS -t "$TOPIC"
