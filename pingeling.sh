@@ -9,8 +9,8 @@ TARGET_NETWORK="10.0.0.0/22"
 WAIT_TIMEOUT=$((5*60*1000))
 
 fping -A -e -l -b12 -p "$WAIT_TIMEOUT" -g "$TARGET_NETWORK" 2>/dev/null | while read -r PING_RESPONSE; do
-    ip_regex='[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}'
-    regex="($ip_regex)[ ]+: \[(.*)\], (.*) bytes, (.*) ms \((.*) avg, (.*)% loss\)"
+    ip_regex='([0-9a-fA-F.:]+)'
+    regex="($ip_regex) +: \[(.*)\], (.*) bytes, (.*) ms \((.*) avg, (.*)% loss\)"
     [[ $PING_RESPONSE =~ $regex ]]
     IP="${BASH_REMATCH[1]}"
     COUNT="${BASH_REMATCH[2]}"
