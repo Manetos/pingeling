@@ -14,10 +14,11 @@ fping -A -e -l -b12 -p "$WAIT_TIMEOUT" -g "$TARGET_NETWORK" 2>/dev/null | while 
     [[ $PING_RESPONSE =~ $regex ]]
     IP="${BASH_REMATCH[1]}"
     COUNT="${BASH_REMATCH[2]}"
-    SIZE="${BASH_REMATCH[3]}"
-    ROUNDTRIP="${BASH_REMATCH[4]}"
-    AVG="${BASH_REMATCH[5]}"
-    LOSS_PERCENT="${BASH_REMATCH[6]}"
+    PACKET_NUMBER="${BASH_REMATCH[3]}"
+    SIZE="${BASH_REMATCH[4]}"
+    ROUNDTRIP="${BASH_REMATCH[5]}"
+    AVG="${BASH_REMATCH[6]}"
+    LOSS_PERCENT="${BASH_REMATCH[7]}"
 
     NOW=$(date --iso-8601=ns)
 
