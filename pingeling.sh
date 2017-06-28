@@ -4,8 +4,8 @@ set -u
 
 BROKERS="$1"
 TOPIC="$2"
+TARGET_NETWORK="$3"
 
-TARGET_NETWORK="10.0.0.0/22"
 WAIT_TIMEOUT=$((5*60*1000))
 
 fping -A -e -l -b12 -p "$WAIT_TIMEOUT" -g "$TARGET_NETWORK" 2>/dev/null | while read -r PING_RESPONSE; do
